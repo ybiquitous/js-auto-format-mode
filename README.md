@@ -1,2 +1,2 @@
 # js-auto-format-mode
-JavaScript auto format mode for Emacs
+Minor mode for auto-formatting JavaScript code
