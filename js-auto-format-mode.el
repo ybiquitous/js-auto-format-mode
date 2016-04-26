@@ -3,7 +3,7 @@
 ;; Copyright (C) 2016 ybiquitous <10koba01@gmail.com>
 
 ;; Author:  ybiquitous <10koba01@gmail.com>
-;; Version: 0.0.3
+;; Version: 0.0.4
 ;; Keywords: languages, tools
 ;; URL: https://github.com/ybiquitous/js-auto-format-mode
 
@@ -37,6 +37,10 @@
 ;; # Change settings
 ;;
 ;;    M-x customize-group RET js-auto-format RET
+;;
+;; # Disabled in any directories
+;;
+;;    M-x add-dir-local-variable RET js-mode RET js-auto-format-disabled RET t
 
 ;;
 
@@ -46,31 +50,35 @@
 (defcustom js-auto-format-command "eslint"
   "JavaScript auto format command."
   :group 'js-auto-format
-  :type 'string)
+  :type 'string
+  :safe #'stringp)
 
 ;;;###autoload
 (defcustom js-auto-format-command-args "--fix"
   "JavaScript auto format command arguments."
   :group 'js-auto-format
-  :type 'string)
+  :type 'string
+  :safe #'stringp)
 
+;;;###autoload
 (defcustom js-auto-format-disabled nil
   "JavaScript auto format disabled."
   :group 'js-auto-format
-  :type 'boolean)
+  :type 'boolean
+  :safe #'booleanp)
 
 ;;;###autoload
 (defun js-auto-format-execute ()
   "Format JavaScript source code."
   (unless js-auto-format-disabled
-      (progn
-        (let* ((command (format "\"%s\" %s \"%s\""
-                                js-auto-format-command
-                                js-auto-format-command-args
-                                (expand-file-name buffer-file-name))))
-          (message "js-auto-format-execute: %s" command)
-          (shell-command command nil "*Messages*")
-          (revert-buffer t t)))))
+    (progn
+      (let* ((command (format "\"%s\" %s \"%s\""
+                              js-auto-format-command
+                              js-auto-format-command-args
+                              (expand-file-name buffer-file-name))))
+        (message "js-auto-format-execute: %s" command)
+        (shell-command command nil "*Messages*")
+        (revert-buffer t t)))))
 
 ;;;###autoload
 (define-minor-mode js-auto-format-mode
