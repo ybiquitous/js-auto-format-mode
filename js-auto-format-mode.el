@@ -3,7 +3,7 @@
 ;; Copyright (C) 2016 ybiquitous <10koba01@gmail.com>
 
 ;; Author:  ybiquitous <10koba01@gmail.com>
-;; Version: 0.0.2
+;; Version: 0.0.3
 ;; Keywords: languages, tools
 ;; URL: https://github.com/ybiquitous/js-auto-format-mode
 
@@ -54,16 +54,15 @@
   :group 'js-auto-format
   :type 'string)
 
-;;;###autoload
-(defcustom js-auto-format-enabled t
-  "JavaScript auto format enabled."
+(defcustom js-auto-format-disabled nil
+  "JavaScript auto format disabled."
   :group 'js-auto-format
   :type 'boolean)
 
 ;;;###autoload
 (defun js-auto-format-execute ()
   "Format JavaScript source code."
-  (if js-auto-format-enabled
+  (unless js-auto-format-disabled
       (progn
         (let* ((command (format "\"%s\" %s \"%s\""
                                 js-auto-format-command
