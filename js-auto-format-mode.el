@@ -3,7 +3,7 @@
 ;; Copyright (C) 2016 ybiquitous <10koba01@gmail.com>
 
 ;; Author:  ybiquitous <10koba01@gmail.com>
-;; Version: 0.0.5
+;; Version: 0.0.6
 ;; Keywords: languages, tools
 ;; URL: https://github.com/ybiquitous/js-auto-format-mode
 
@@ -80,6 +80,7 @@
 ;;;###autoload
 (defun js-auto-format-execute ()
   "Format JavaScript source code."
+  (interactive)
   (unless js-auto-format-disabled
     (progn
       (let* ((command (format "\"%s\" %s \"%s\""
