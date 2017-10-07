@@ -41,6 +41,12 @@ For details, please see [ESLint official site](http://eslint.org/).
 M-x add-dir-local-variable RET js-mode RET js-auto-format-disabled RET t
 ```
 
+### Format only once
+
+```
+M-x js-auto-format-execute
+```
+
 ### Customize
 
 ```
