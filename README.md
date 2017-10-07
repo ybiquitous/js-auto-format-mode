@@ -9,6 +9,7 @@ Emacs minor mode for auto-formatting JavaScript code.
 - [Install](#install)
 - [Use](#use)
 - [Release](#release)
+- [License](#license)
 
 ## Install
 
@@ -77,3 +78,7 @@ npm install --global prettier
 git tag -a 0.0.x -m 'version 0.0.x'
 git push --tags
 ```
+
+## License
+
+[GPLv3](LICENSE) © ybiquitous
