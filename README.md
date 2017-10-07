@@ -2,6 +2,8 @@
 
 Emacs minor mode for auto-formatting JavaScript code.
 
+![Demo](demo.gif)
+
 ## Table of Contents
 
 - [Install](#install)
