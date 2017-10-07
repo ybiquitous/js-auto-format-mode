@@ -15,17 +15,19 @@ Emacs minor mode for auto-formatting JavaScript code.
 
 ### Prerequisites
 
-- Emacs 24+
+- [Emacs 24+](https://www.gnu.org/software/emacs/)
 - [Node.js](https://nodejs.org/)
 - [ESLint](https://eslint.org/)
 
-### Install ESLint
+### ESLint
+
+Install:
 
 ```sh
 npm install --global eslint
 ```
 
-### Create `~/.eslintrc` file
+Create `~/.eslintrc` file:
 
 ```json
 {
@@ -35,11 +37,11 @@ npm install --global eslint
 
 For details, please see [ESLint official site](https://eslint.org/).
 
-### MELPA
+### [MELPA](https://melpa.org/)
 
 <kbd>M-x package-install RET js-auto-format-mode RET</kbd>
 
-### `use-package`
+### [use-package](https://github.com/jwiegley/use-package)
 
 ```elisp
 (use-package js-auto-format-mode)
