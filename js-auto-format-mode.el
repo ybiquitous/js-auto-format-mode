@@ -4,6 +4,7 @@
 
 ;; Author:  ybiquitous <ybiquitous@gmail.com>
 ;; Version: 0.1.0
+;; Package-Requires: ((emacs "24"))
 ;; Keywords: languages, tools, javascript
 ;; URL: https://github.com/ybiquitous/js-auto-format-mode
 ;; Created: Apr 2016
