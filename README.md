@@ -13,12 +13,11 @@ Emacs minor mode for auto-formatting JavaScript code.
 
 ## Install
 
-```elisp
-(unless (package-installed-p 'js-auto-format-mode)
-  (url-copy-file "https://raw.githubusercontent.com/ybiquitous/js-auto-format-mode/master/js-auto-format-mode.el" "js-auto-format-mode.el" t)
-  (package-install-file "js-auto-format-mode.el")
-  (delete-file "js-auto-format-mode.el"))
-```
+### Prerequisites
+
+- Emacs 24+
+- [Node.js](https://nodejs.org/)
+- [ESLint](https://eslint.org/)
 
 ### Install ESLint
 
@@ -34,7 +33,17 @@ npm install --global eslint
 }
 ```
 
-For details, please see [ESLint official site](http://eslint.org/).
+For details, please see [ESLint official site](https://eslint.org/).
+
+### MELPA
+
+<kbd>M-x package-install RET js-auto-format-mode RET</kbd>
+
+### `use-package`
+
+```elisp
+(use-package js-auto-format-mode)
+```
 
 ## Use
 
