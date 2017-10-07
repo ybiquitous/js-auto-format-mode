@@ -2,6 +2,12 @@
 
 Emacs minor mode for auto-formatting JavaScript code.
 
+## Table of Contents
+
+- [Install](#install)
+- [Use](#use)
+- [Release](#release)
+
 ## Install
 
 ```elisp
