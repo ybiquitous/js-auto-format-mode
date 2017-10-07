@@ -4,45 +4,15 @@
 
 ;; Author:  ybiquitous <ybiquitous@gmail.com>
 ;; Version: 0.0.7
-;; Keywords: languages, tools
+;; Keywords: languages, tools, javascript
 ;; URL: https://github.com/ybiquitous/js-auto-format-mode
-
-;; This program is free software; you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation, either version 3 of the License, or
-;; (at your option) any later version.
-
-;; This program is distributed in the hope that it will be useful,
-;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;; GNU General Public License for more details.
-
-;; You should have received a copy of the GNU General Public License
-;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
+;; Created: Apr 2016
+;; License: GNU General Public License v3.0
+;; Distribution: This file is not part of Emacs
 
 ;;; Commentary:
 
-;; # Setup
-;;
-;; Install `Node.js' and `ESLint':
-;;
-;;    npm install -g eslint
-;;
-;; Put `~/.eslintrc.json'. See `http://eslint.org/'.
-;;
-;; Enable `js-auto-format-mode':
-;;
-;;    (add-hook 'js-mode-hook 'js-auto-format-mode)
-;;
-;; # Change settings
-;;
-;;    M-x customize-group RET js-auto-format RET
-;;
-;; # Disabled in any directories
-;;
-;;    M-x add-dir-local-variable RET js-mode RET js-auto-format-disabled RET t
-
-;;
+;; Please see `https://github.com/ybiquitous/js-auto-format-mode'.
 
 ;;; Code:
 
