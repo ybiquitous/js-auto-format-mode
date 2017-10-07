@@ -59,8 +59,7 @@
                               (expand-file-name buffer-file-name))))
         (message "js-auto-format-execute: %s" command)
         (shell-command command nil "*Messages*")
-        (revert-buffer t t)
-        (js-auto-format-mode t)))))
+        (revert-buffer t t)))))
 
 ;;;###autoload
 (define-minor-mode js-auto-format-mode
