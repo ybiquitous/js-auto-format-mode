@@ -20,7 +20,7 @@ Emacs minor mode for auto-formatting JavaScript code.
 ### Install ESLint
 
 ```sh
-npm install -g eslint
+npm install --global eslint
 ```
 
 ### Create `~/.eslintrc` file
@@ -57,6 +57,22 @@ M-x js-auto-format-execute
 
 ```
 M-x customize-group RET js-auto-format RET
+```
+
+### Use Prettier instead of ESLint
+
+#### Install
+
+```sh
+npm install --global prettier
+```
+
+### Customize
+
+```elisp
+(custom-set-variables
+  '(js-auto-format-command "prettier")
+  '(js-auto-format-command-args "--write --single-quote --no-semi"))
 ```
 
 ## Release
