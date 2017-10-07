@@ -67,7 +67,7 @@ M-x customize-group RET js-auto-format RET
 npm install --global prettier
 ```
 
-### Customize
+#### Customize
 
 ```elisp
 (custom-set-variables
