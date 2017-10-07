@@ -3,7 +3,7 @@
 ;; Copyright (C) 2017 ybiquitous <ybiquitous@gmail.com>
 
 ;; Author:  ybiquitous <ybiquitous@gmail.com>
-;; Version: 0.0.7
+;; Version: 0.1.0
 ;; Keywords: languages, tools, javascript
 ;; URL: https://github.com/ybiquitous/js-auto-format-mode
 ;; Created: Apr 2016
@@ -24,7 +24,7 @@
   :safe #'stringp)
 
 ;;;###autoload
-(defcustom js-auto-format-command-args "--fix"
+(defcustom js-auto-format-command-args "--fix --format=unix"
   "JavaScript auto format command arguments."
   :group 'js-auto-format
   :type 'string
@@ -38,28 +38,42 @@
   :safe #'booleanp)
 
 (defun js-auto-format-command-dir ()
+  "Find directory in which command exists."
   (let* ((root (locate-dominating-file default-directory "node_modules"))
          (local-path (expand-file-name "node_modules/.bin" root)))
     (if (file-directory-p local-path)
         (expand-file-name "node_modules/.bin" root))))
 
 (defun js-auto-format-command-path ()
+  "Find command path."
   (let* ((command-path (expand-file-name js-auto-format-command (js-auto-format-command-dir))))
     (if (file-exists-p command-path) command-path js-auto-format-command)))
+
+(defun js-auto-format-full-command ()
+  "Return full command with all arguments."
+  (format "\"%s\" %s \"%s\""
+    (js-auto-format-command-path)
+    js-auto-format-command-args
+    (expand-file-name buffer-file-name)))
+
+(defvar js-auto-format-buffer "*JS Auto Format*")
+
+(defun js-auto-format-kill-buffer ()
+  "Kill command output buffer if command succeeds."
+  (when (= 0 (buffer-size (get-buffer js-auto-format-buffer)))
+    (delete-windows-on js-auto-format-buffer)
+    (kill-buffer js-auto-format-buffer)))
 
 ;;;###autoload
 (defun js-auto-format-execute ()
   "Format JavaScript source code."
   (interactive)
   (unless js-auto-format-disabled
-    (progn
-      (let* ((command (format "\"%s\" %s \"%s\""
-                              (js-auto-format-command-path)
-                              js-auto-format-command-args
-                              (expand-file-name buffer-file-name))))
-        (message "js-auto-format-execute: %s" command)
-        (shell-command command nil "*Messages*")
-        (revert-buffer t t)))))
+    (let* ((command (js-auto-format-full-command)))
+      (message "js-auto-format-execute: %s" command)
+      (shell-command command js-auto-format-buffer)
+      (revert-buffer t t t)
+      (js-auto-format-kill-buffer))))
 
 ;;;###autoload
 (define-minor-mode js-auto-format-mode
