@@ -43,21 +43,15 @@ For details, please see [ESLint official site](http://eslint.org/).
 
 ### Disabled in any directories
 
-```
-M-x add-dir-local-variable RET js-mode RET js-auto-format-disabled RET t
-```
+<kbd>M-x add-dir-local-variable RET js-mode RET js-auto-format-disabled RET t</kbd>
 
 ### Format only once
 
-```
-M-x js-auto-format-execute
-```
+<kbd>M-x js-auto-format-execute</kbd>
 
 ### Customize
 
-```
-M-x customize-group RET js-auto-format RET
-```
+<kbd>M-x customize-group RET js-auto-format RET</kbd>
 
 ### Use Prettier instead of ESLint
 
