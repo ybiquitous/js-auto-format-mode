@@ -2,18 +2,19 @@
 
 Emacs minor mode for auto-formatting JavaScript code.
 
-By default, [ESLint](https://eslint.org/) is used as the formatter.
+By default, this package uses [ESLint](https://eslint.org/) as formatter.
+For details, please see [`--fix`](https://eslint.org/docs/user-guide/command-line-interface#--fix)
+option of ESLint command line.
 
 ![Demo](demo.gif)
 
 ## Table of Contents
 
 - [Install](#install)
-  - [Prerequisites](#prerequisites)
+  - [Dependencies](#dependencies)
   - [ESLint](#eslint)
   - [MELPA](#melpa)
-- [Use](#use)
-  - [Enable automatically](#enable-automatically)
+- [Usage](#usage)
   - [Format on demand](#format-on-demand)
   - [Customize](#customize)
   - [Use other formatter](#use-other-formatter)
@@ -23,9 +24,9 @@ By default, [ESLint](https://eslint.org/) is used as the formatter.
 
 ## Install
 
-### Prerequisites
+### Dependencies
 
-- [Emacs 24+](https://www.gnu.org/software/emacs/)
+- [Emacs 24+](https://www.gnu.org/software/emacs)
 
 Optional (if you use a different formatter than the default one):
 
@@ -50,31 +51,39 @@ Create `~/.eslintrc` file:
 
 For details, please see [ESLint official site](https://eslint.org/).
 
-**NOTICE**: If you use ESLint in a Node.js project,
-`eslint` command installed into your project will be used
-(maybe `node_modules/.bin/eslint`) instead of one installed globally.
-
 ### MELPA
 
-Install `js-auto-format-mode.el` by [MELPA](https://melpa.org/).
+Install by [MELPA](https://melpa.org/).
 
 <kbd>M-x package-install RET js-auto-format-mode RET</kbd>
 
-If you use [`use-package`](https://github.com/jwiegley/use-package):
+## Usage
 
-```elisp
-(use-package js-auto-format-mode)
-```
-
-## Use
-
-### Enable automatically
+Recommended configuration:
 
 ```elisp
 (add-hook 'js-mode-hook #'js-auto-format-mode)
 
 ;; if you use js2-mode
 (add-hook 'js2-mode-hook #'js-auto-format-mode)
+```
+
+If you use `js-auto-format-mode` in a Node.js project,
+It is recommended to install also [`add-node-modules-path`](https://github.com/codesuki/add-node-modules-path).
+Because this package puts project local `eslint` (that is `node_modules/.bin/eslint`)
+before global `eslint`.
+
+If you use [`use-package`](https://github.com/jwiegley/use-package),
+installation and configuration are easier:
+
+```elisp
+(use-package js-auto-format-mode
+  :config
+  (add-hook 'js-mode-hook #'js-auto-format-mode))
+
+(use-package add-node-modules-path
+  :config
+  (add-hook 'js-mode-hook #'add-node-modules-path))
 ```
 
 ### Format on demand

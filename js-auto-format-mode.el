@@ -3,7 +3,7 @@
 ;; Copyright (C) 2017 ybiquitous <ybiquitous@gmail.com>
 
 ;; Author:  ybiquitous <ybiquitous@gmail.com>
-;; Version: 0.1.0
+;; Version: 1.0.0
 ;; Package-Requires: ((emacs "24"))
 ;; Keywords: languages
 ;; URL: https://github.com/ybiquitous/js-auto-format-mode
@@ -54,26 +54,14 @@
   :type 'boolean
   :safe #'booleanp)
 
-(defun js-auto-format-command-dir ()
-  "Find directory in which command exists."
-  (let* ((root (locate-dominating-file default-directory "node_modules"))
-         (local-path (expand-file-name "node_modules/.bin" root)))
-    (if (file-directory-p local-path)
-        (expand-file-name "node_modules/.bin" root))))
-
-(defun js-auto-format-command-path ()
-  "Find command path."
-  (let* ((command-path (expand-file-name js-auto-format-command (js-auto-format-command-dir))))
-    (if (file-exists-p command-path) command-path js-auto-format-command)))
+(defconst js-auto-format-buffer "*JS Auto Format*")
 
 (defun js-auto-format-full-command ()
   "Return full command with all arguments."
   (format "%s %s %s"
-    (shell-quote-argument (js-auto-format-command-path))
+    (shell-quote-argument (executable-find js-auto-format-command))
     js-auto-format-command-args
     (shell-quote-argument (expand-file-name buffer-file-name))))
-
-(defconst js-auto-format-buffer "*JS Auto Format*")
 
 (defun js-auto-format-kill-buffer ()
   "Kill command output buffer if command succeeds."
@@ -97,6 +85,7 @@
   "Minor mode for auto-formatting JavaScript code"
   :init-value nil
   :lighter " AutoFmt"
+  :after-hook (js-auto-format-execute)
   (if js-auto-format-mode
       (add-hook 'after-save-hook 'js-auto-format-execute t t)
     (remove-hook 'after-save-hook 'js-auto-format-execute t)))
