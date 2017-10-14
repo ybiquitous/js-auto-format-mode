@@ -50,6 +50,10 @@ Create `~/.eslintrc` file:
 
 For details, please see [ESLint official site](https://eslint.org/).
 
+**NOTICE**: If you use ESLint in a Node.js project,
+`eslint` command installed into your project will be used
+(maybe `node_modules/.bin/eslint`) instead of one installed globally.
+
 ### MELPA
 
 Install `js-auto-format-mode.el` by [MELPA](https://melpa.org/).
