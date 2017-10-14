@@ -53,7 +53,7 @@ For details, please see [ESLint official site](https://eslint.org/).
 
 ### MELPA
 
-Install by [MELPA](https://melpa.org/).
+Install from [MELPA](https://melpa.org/).
 
 <kbd>M-x package-install RET js-auto-format-mode RET</kbd>
 
