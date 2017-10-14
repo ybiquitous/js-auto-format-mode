@@ -71,11 +71,10 @@ If you use [`use-package`](https://github.com/jwiegley/use-package):
 ### Enable
 
 ```elisp
-;; for js-mode
-(add-hook 'js-mode-hook 'js-auto-format-mode)
+(add-hook 'js-mode-hook #'js-auto-format-mode)
 
-;; for js2-mode
-(add-hook 'js2-mode-hook 'js-auto-format-mode)
+;; if you use js2-mode
+(add-hook 'js2-mode-hook #'js-auto-format-mode)
 ```
 
 ### Format on demand
