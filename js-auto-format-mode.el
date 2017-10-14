@@ -5,7 +5,7 @@
 ;; Author:  ybiquitous <ybiquitous@gmail.com>
 ;; Version: 0.1.0
 ;; Package-Requires: ((emacs "24"))
-;; Keywords: languages, tools
+;; Keywords: languages
 ;; URL: https://github.com/ybiquitous/js-auto-format-mode
 ;; Created: Apr 2016
 ;; License: GNU General Public License v3.0
@@ -30,23 +30,26 @@
 
 ;;; Code:
 
-;;;###autoload
+(defgroup js-auto-format nil
+  "Minor mode for auto-formatting JavaScript code."
+  :group 'languages
+  :prefix "js-auto-format-"
+  :link '(url-link :tag "Repository" "https://github.com/ybiquitous/js-auto-format-mode"))
+
 (defcustom js-auto-format-command "eslint"
-  "JavaScript auto format command."
+  "Executable command."
   :group 'js-auto-format
   :type 'string
   :safe #'stringp)
 
-;;;###autoload
 (defcustom js-auto-format-command-args "--fix --format=unix"
-  "JavaScript auto format command arguments."
+  "Argument(s) of command."
   :group 'js-auto-format
   :type 'string
   :safe #'stringp)
 
-;;;###autoload
 (defcustom js-auto-format-disabled nil
-  "JavaScript auto format disabled."
+  "Disable this mode."
   :group 'js-auto-format
   :type 'boolean
   :safe #'booleanp)
