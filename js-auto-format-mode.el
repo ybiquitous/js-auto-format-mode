@@ -68,10 +68,10 @@
 
 (defun js-auto-format-full-command ()
   "Return full command with all arguments."
-  (format "\"%s\" %s \"%s\""
-    (js-auto-format-command-path)
+  (format "%s %s %s"
+    (shell-quote-argument (js-auto-format-command-path))
     js-auto-format-command-args
-    (expand-file-name buffer-file-name)))
+    (shell-quote-argument (expand-file-name buffer-file-name))))
 
 (defvar js-auto-format-buffer "*JS Auto Format*")
 
