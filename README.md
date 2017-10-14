@@ -2,12 +2,22 @@
 
 Emacs minor mode for auto-formatting JavaScript code.
 
+By default, [ESLint](https://eslint.org/) is used as the formatter.
+
 ![Demo](demo.gif)
 
 ## Table of Contents
 
 - [Install](#install)
+  - [Prerequisites](#prerequisites)
+  - [ESLint](#eslint)
+  - [MELPA](#melpa)
 - [Use](#use)
+  - [Enable](#enable)
+  - [Format on demand](#format-on-demand)
+  - [Customize](#customize)
+  - [Use other formatter](#use-other-formatter)
+  - [Disable in any directories](#disable-in-any-directories)
 - [Release](#release)
 - [License](#license)
 
@@ -16,12 +26,15 @@ Emacs minor mode for auto-formatting JavaScript code.
 ### Prerequisites
 
 - [Emacs 24+](https://www.gnu.org/software/emacs/)
+
+Optional (if you use a different formatter than the default one):
+
 - [Node.js](https://nodejs.org/)
 - [ESLint](https://eslint.org/)
 
 ### ESLint
 
-Install:
+Install `eslint` command:
 
 ```sh
 npm install --global eslint
@@ -37,11 +50,13 @@ Create `~/.eslintrc` file:
 
 For details, please see [ESLint official site](https://eslint.org/).
 
-### [MELPA](https://melpa.org/)
+### MELPA
+
+Install `js-auto-format-mode.el` by [MELPA](https://melpa.org/).
 
 <kbd>M-x package-install RET js-auto-format-mode RET</kbd>
 
-### [use-package](https://github.com/jwiegley/use-package)
+If you use [`use-package`](https://github.com/jwiegley/use-package):
 
 ```elisp
 (use-package js-auto-format-mode)
@@ -49,33 +64,35 @@ For details, please see [ESLint official site](https://eslint.org/).
 
 ## Use
 
-### Enable `js-auto-format-mode` in `js-mode`
+### Enable
 
 ```elisp
+;; for js-mode
 (add-hook 'js-mode-hook 'js-auto-format-mode)
+
+;; for js2-mode
+(add-hook 'js2-mode-hook 'js-auto-format-mode)
 ```
 
-### Disabled in any directories
+### Format on demand
 
-<kbd>M-x add-dir-local-variable RET js-mode RET js-auto-format-disabled RET t</kbd>
-
-### Format only once
-
-<kbd>M-x js-auto-format-execute</kbd>
+<kbd>M-x js-auto-format-execute</kbd> (or <kbd>M-x j-a-f-e</kbd>)
 
 ### Customize
 
-<kbd>M-x customize-group RET js-auto-format RET</kbd>
+<kbd>M-x customize-group RET js-auto-format RET</kbd> (or <kbd>M-x cus-g RET j-a-f RET</kbd>)
 
-### Use Prettier instead of ESLint
+### Use other formatter
 
-#### Install
+For example, in case of using [Prettier](https://prettier.io/).
+
+First, install `prettier` command.
 
 ```sh
 npm install --global prettier
 ```
 
-#### Customize
+Then, customize `js-auto-format-mode`.
 
 ```elisp
 (custom-set-variables
@@ -83,12 +100,16 @@ npm install --global prettier
   '(js-auto-format-command-args "--write --single-quote --no-semi"))
 ```
 
+### Disable in any directories
+
+<kbd>M-x add-dir-local-variable RET js-mode RET js-auto-format-disabled RET t</kbd>
+
 ## Release
 
-```sh
-git tag -a 0.0.x -m 'version 0.0.x'
-git push --tags
-```
+For maintainers.
+
+1. `git tag -a x.y.z -m 'version x.y.z'`
+1. `git push --tags`
 
 ## License
 
