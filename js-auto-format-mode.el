@@ -73,7 +73,7 @@
     js-auto-format-command-args
     (shell-quote-argument (expand-file-name buffer-file-name))))
 
-(defvar js-auto-format-buffer "*JS Auto Format*")
+(defconst js-auto-format-buffer "*JS Auto Format*")
 
 (defun js-auto-format-kill-buffer ()
   "Kill command output buffer if command succeeds."
