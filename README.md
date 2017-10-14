@@ -68,7 +68,7 @@ Recommended configuration:
 (add-hook 'js2-mode-hook #'js-auto-format-mode)
 ```
 
-If you use `js-auto-format-mode` in a Node.js project,
+**NOTE**: If you use `js-auto-format-mode` in a Node.js project,
 It is recommended to install also [`add-node-modules-path`](https://github.com/codesuki/add-node-modules-path).
 Because this package puts project local `eslint` (that is `node_modules/.bin/eslint`)
 before global `eslint`.
