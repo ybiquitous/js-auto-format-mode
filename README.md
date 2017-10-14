@@ -87,11 +87,15 @@ installation and configuration are easier:
 
 ### Format on demand
 
-<kbd>M-x js-auto-format-execute</kbd> (or <kbd>M-x j-a-f-e</kbd>)
+<kbd>M-x js-auto-format-execute</kbd>
+
+(or <kbd>M-x j-a-f-e</kbd>)
 
 ### Customize
 
-<kbd>M-x customize-group RET js-auto-format RET</kbd> (or <kbd>M-x cus-g RET j-a-f RET</kbd>)
+<kbd>M-x customize-group RET js-auto-format RET</kbd>
+
+(or <kbd>M-x cus-g RET j-a-f RET</kbd>)
 
 ### Use other formatter
 
