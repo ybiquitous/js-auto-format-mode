@@ -13,7 +13,7 @@ By default, [ESLint](https://eslint.org/) is used as the formatter.
   - [ESLint](#eslint)
   - [MELPA](#melpa)
 - [Use](#use)
-  - [Enable](#enable)
+  - [Enable automatically](#enable-automatically)
   - [Format on demand](#format-on-demand)
   - [Customize](#customize)
   - [Use other formatter](#use-other-formatter)
@@ -68,7 +68,7 @@ If you use [`use-package`](https://github.com/jwiegley/use-package):
 
 ## Use
 
-### Enable
+### Enable automatically
 
 ```elisp
 (add-hook 'js-mode-hook #'js-auto-format-mode)
