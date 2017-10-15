@@ -1,5 +1,7 @@
 # js-auto-format-mode
 
+[![MELPA](https://melpa.org/packages/js-auto-format-mode-badge.svg)](https://melpa.org/#/js-auto-format-mode)
+
 Emacs minor mode for auto-formatting JavaScript code.
 
 By default, this package uses [ESLint](https://eslint.org/) as formatter.
