@@ -81,7 +81,7 @@
 (defun js-auto-format-execute ()
   "Format JavaScript source code."
   (interactive)
-  (unless js-auto-format-disabled
+  (unless (or js-auto-format-disabled buffer-read-only)
     (let* ((command (js-auto-format-full-command)))
       (message "js-auto-format-execute: %s" command)
       (shell-command command js-auto-format-buffer)
