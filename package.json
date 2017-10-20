@@ -1,6 +1,6 @@
 {
   "name": "js-auto-format-mode",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "repository": "ybiquitous/js-auto-format-mode",
   "author": "ybiquitous <ybiquitous@gmail.com>",
@@ -14,8 +14,8 @@
     "lint": "npm-run-all --print-name --print-label --parallel lint:*",
     "commitmsg": "commitlint -e",
     "precommit": "lint-staged",
-    "release": "standard-version",
-    "release:dry-run": "standard-version --dry-run"
+    "release": "standard-version --tag-prefix=",
+    "release:dry-run": "npm run release -- --dry-run"
   },
   "lint-staged": {
     "*.md": "markdownlint"
