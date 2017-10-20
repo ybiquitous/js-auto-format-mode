@@ -93,7 +93,6 @@
   "Minor mode for auto-formatting JavaScript code"
   :init-value nil
   :lighter " AutoFmt"
-  :after-hook (js-auto-format-execute)
   (if js-auto-format-mode
       (add-hook 'after-save-hook 'js-auto-format-execute t t)
     (remove-hook 'after-save-hook 'js-auto-format-execute t)))
