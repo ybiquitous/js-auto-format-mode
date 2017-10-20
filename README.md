@@ -1,6 +1,7 @@
 # js-auto-format-mode
 
 [![MELPA](https://melpa.org/packages/js-auto-format-mode-badge.svg)](https://melpa.org/#/js-auto-format-mode)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 
 Emacs minor mode for auto-formatting JavaScript code.
 
@@ -21,7 +22,9 @@ option of ESLint command line.
   - [Customize](#customize)
   - [Use other formatter](#use-other-formatter)
   - [Disable in any directories](#disable-in-any-directories)
-- [Release](#release)
+- [Development](#development)
+  - [Setup](#setup)
+  - [Release](#release)
 - [License](#license)
 
 ## Install
@@ -72,7 +75,8 @@ Recommended configuration:
 
 **NOTE**: In a Node.js project, it is **recommended** to install
 also [`add-node-modules-path`](https://github.com/codesuki/add-node-modules-path),
-which puts project local `eslint` (maybe `node_modules/.bin/eslint`) before global `eslint`.
+which puts project local `eslint` (maybe `node_modules/.bin/eslint`)
+before global `eslint`.
 
 If you use [`use-package`](https://github.com/jwiegley/use-package),
 installation and configuration are easier:
@@ -121,12 +125,20 @@ Then, customize `js-auto-format-mode`.
 
 <kbd>M-x add-dir-local-variable RET js-mode RET js-auto-format-disabled RET t</kbd>
 
-## Release
+## Development
 
-For maintainers.
+### Setup
 
-1. `git tag -a x.y.z -m 'version x.y.z'`
-1. `git push --tags`
+1. `git clone git@github.com:ybiquitous/js-auto-format-mode.gi`
+1. `yarn`
+
+### Release
+
+1. `git checkout master`
+1. `git pull`
+1. `yarn release:dry-run`
+1. `yarn release`
+1. `git push --follow-tags`
 
 ## License
 
