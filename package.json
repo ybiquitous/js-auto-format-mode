@@ -1,0 +1,28 @@
+{
+  "name": "js-auto-format-mode",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "ybiquitous/js-auto-format-mode",
+  "author": "ybiquitous <ybiquitous@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "ybiq": "*"
+  },
+  "scripts": {
+    "lint:md": "markdownlint *.md",
+    "lint": "npm-run-all --print-name --print-label --parallel lint:*",
+    "commitmsg": "commitlint -e",
+    "precommit": "lint-staged",
+    "release": "standard-version",
+    "release:dry-run": "standard-version --dry-run"
+  },
+  "lint-staged": {
+    "*.md": "markdownlint"
+  },
+  "standard-version": {
+    "scripts": {
+      "postchangelog": "prepend CHANGELOG.md \"<!-- markdownlint-disable -->\n\""
+    }
+  }
+}
