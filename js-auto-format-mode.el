@@ -77,11 +77,15 @@
     (delete-windows-on js-auto-format-buffer)
     (kill-buffer js-auto-format-buffer)))
 
+(defun js-auto-format-ignored-path-p ()
+  "Test whether the file path is ignored."
+  (string-match-p "/node_modules/" buffer-file-name))
+
 ;;;###autoload
 (defun js-auto-format-execute ()
   "Format JavaScript source code."
   (interactive)
-  (unless (or js-auto-format-disabled buffer-read-only)
+  (unless (or js-auto-format-disabled buffer-read-only (js-auto-format-ignored-path-p))
     (let* ((command (js-auto-format-full-command)))
       (message "js-auto-format-execute: %s" command)
       (shell-command command js-auto-format-buffer)
