@@ -68,9 +68,6 @@ Recommended configuration:
 
 ```elisp
 (add-hook 'js-mode-hook #'js-auto-format-mode)
-
-;; if you use js2-mode
-(add-hook 'js2-mode-hook #'js-auto-format-mode)
 ```
 
 **NOTE**: In a Node.js project, it is **recommended** to install
