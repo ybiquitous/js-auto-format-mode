@@ -77,18 +77,20 @@
     (delete-windows-on js-auto-format-buffer)
     (kill-buffer js-auto-format-buffer)))
 
-(defun js-auto-format-ignored-path-p ()
-  "Test whether the file path is ignored."
-  (string-match-p "/node_modules/" buffer-file-name))
+;;;###autoload
+(defun js-auto-format-enabled-p ()
+  "Test whether js-auto-format-mode is enabled."
+  (and
+    (not buffer-read-only)
+    (not js-auto-format-disabled)
+    (buffer-file-name)
+    (not (string-match-p "/node_modules/" buffer-file-name))))
 
 ;;;###autoload
 (defun js-auto-format-execute ()
   "Format JavaScript source code."
   (interactive)
-  (unless (or buffer-read-only
-          js-auto-format-disabled
-          (not buffer-file-name)
-          (js-auto-format-ignored-path-p))
+  (when (js-auto-format-enabled-p)
     (let* ((command (js-auto-format-full-command)))
       (message "js-auto-format-execute: %s" command)
       (shell-command command js-auto-format-buffer)
@@ -98,10 +100,10 @@
 ;;;###autoload
 (define-minor-mode js-auto-format-mode
   "Minor mode for auto-formatting JavaScript code"
-  :init-value nil
+  :group 'js-auto-format
   :lighter " AutoFmt"
   (if js-auto-format-mode
-      (add-hook 'after-save-hook 'js-auto-format-execute t t)
+    (add-hook 'after-save-hook 'js-auto-format-execute t t)
     (remove-hook 'after-save-hook 'js-auto-format-execute t)))
 
 (provide 'js-auto-format-mode)
