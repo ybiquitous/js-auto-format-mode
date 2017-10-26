@@ -70,10 +70,9 @@ Recommended configuration:
 (add-hook 'js-mode-hook #'js-auto-format-mode)
 ```
 
-**NOTE**: In a Node.js project, it is **recommended** to install
+**NOTE**: In a Node.js project, it's **recommended** to install
 also [`add-node-modules-path`](https://github.com/codesuki/add-node-modules-path),
-which puts project local `eslint` (maybe `node_modules/.bin/eslint`)
-before global `eslint`.
+which puts project local `eslint` (`node_modules/.bin/eslint`) before global `eslint`.
 
 If you use [`use-package`](https://github.com/jwiegley/use-package),
 installation and configuration are easier:
