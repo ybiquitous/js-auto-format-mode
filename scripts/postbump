@@ -1,0 +1,7 @@
+#!/bin/sh
+
+readonly NEXT_VERSION=$(grep '"version": "[^"]*"' package.json | grep -oE '[0-9.]+')
+sed -E -i '' "s/;; Version: [0-9.]+/;; Version: ${NEXT_VERSION}/" js-auto-format-mode.el
+
+git add js-auto-format-mode.el
+git commit -m "chore(release): bump up *.el to version ${NEXT_VERSION}"

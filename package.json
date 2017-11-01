@@ -22,6 +22,7 @@
   },
   "standard-version": {
     "scripts": {
+      "postbump": "./scripts/postbump",
       "postchangelog": "prepend CHANGELOG.md \"<!-- markdownlint-disable -->\n\""
     }
   }
