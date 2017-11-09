@@ -22,6 +22,7 @@ option of ESLint command line.
   - [Customize](#customize)
   - [Use other formatter](#use-other-formatter)
   - [Disable in any directories](#disable-in-any-directories)
+  - [Enable in editing CSS](#enable-in-editing-css)
 - [Change Log](#change-log)
 - [Development](#development)
   - [Setup](#setup)
@@ -121,6 +122,16 @@ Then, customize `js-auto-format-mode`.
 ### Disable in any directories
 
 <kbd>M-x add-dir-local-variable RET js-mode RET js-auto-format-disabled RET t</kbd>
+
+## Enable in editing CSS
+
+```elisp
+(defun my/enable-auto-format-on-css ()
+  (setq-local js-auto-format-command "prettier")
+  (setq-local js-auto-format-command-args "--write --no-color")
+  (js-auto-format-mode))
+(add-hook 'css-mode-hook #'my/enable-auto-format-on-css)
+```
 
 ## Change Log
 
