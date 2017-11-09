@@ -22,6 +22,7 @@ option of ESLint command line.
   - [Customize](#customize)
   - [Use other formatter](#use-other-formatter)
   - [Disable in any directories](#disable-in-any-directories)
+- [Changelog](#changelog)
 - [Development](#development)
   - [Setup](#setup)
   - [Release](#release)
@@ -120,6 +121,10 @@ Then, customize `js-auto-format-mode`.
 ### Disable in any directories
 
 <kbd>M-x add-dir-local-variable RET js-mode RET js-auto-format-disabled RET t</kbd>
+
+## Changelog
+
+For each release, please see [CHANGELOG](CHANGELOG.md).
 
 ## Development
 
