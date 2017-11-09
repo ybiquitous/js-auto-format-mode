@@ -124,7 +124,7 @@ Then, customize `js-auto-format-mode`.
 
 ## Change Log
 
-For each release, please see [Change Log](CHANGELOG.md).
+For each release, please see [here](CHANGELOG.md).
 
 ## Development
 
