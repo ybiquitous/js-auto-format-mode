@@ -21,6 +21,7 @@
     "*.md": "markdownlint"
   },
   "standard-version": {
+    "message": "chore(release): new version %s",
     "scripts": {
       "postbump": "./scripts/postbump",
       "postchangelog": "prepend CHANGELOG.md \"<!-- markdownlint-disable -->\n\""
