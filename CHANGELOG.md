@@ -3,6 +3,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.4"></a>
+## [1.0.4](https://github.com/ybiquitous/js-auto-format-mode/compare/1.0.3...1.0.4) (2017-12-21)
+
+
+### Bug Fixes
+
+* improve behavior of the `*JS Auto Format*` buffer ([50445bd](https://github.com/ybiquitous/js-auto-format-mode/commit/50445bd))
+
+
+
 <a name="1.0.3"></a>
 ## [1.0.3](https://github.com/ybiquitous/js-auto-format-mode/compare/1.0.2...1.0.3) (2017-11-01)
 
