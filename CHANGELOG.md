@@ -3,6 +3,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.5"></a>
+## [1.0.5](https://github.com/ybiquitous/js-auto-format-mode/compare/1.0.4...1.0.5) (2017-12-29)
+
+
+### Bug Fixes
+
+* call `revert-buffer` always ([cf6c058](https://github.com/ybiquitous/js-auto-format-mode/commit/cf6c058))
+
+
+
 <a name="1.0.4"></a>
 ## [1.0.4](https://github.com/ybiquitous/js-auto-format-mode/compare/1.0.3...1.0.4) (2017-12-21)
 
