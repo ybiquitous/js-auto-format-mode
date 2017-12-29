@@ -96,14 +96,14 @@
 
       (if (zerop (call-process-shell-command command nil buffer nil))
         (progn ;; success
+          (revert-buffer t t t)
           (delete-window (get-buffer-window buffer))
           (kill-buffer buffer))
         (progn ;; failure
+          (revert-buffer t t t)
           (display-buffer buffer)
           (shrink-window-if-larger-than-buffer (get-buffer-window buffer))
-          (set-window-point (get-buffer-window buffer) 0)))
-
-      (revert-buffer t t t))))
+          (set-window-point (get-buffer-window buffer) 0))))))
 
 ;;;###autoload
 (define-minor-mode js-auto-format-mode
