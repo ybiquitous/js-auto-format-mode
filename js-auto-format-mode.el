@@ -86,24 +86,17 @@
   (interactive)
   (when (js-auto-format-enabled-p)
     (let* ((command (js-auto-format-full-command))
-            (buffer js-auto-format-buffer))
+            (buffer js-auto-format-buffer)
+            (saved-current-buffer (current-buffer)))
 
       (message "js-auto-format-execute: %s" command)
 
-      ;; clear buffer
-      (if (get-buffer buffer) (kill-buffer buffer))
-      (get-buffer-create buffer)
-
-      (if (zerop (call-process-shell-command command nil buffer nil))
-        (progn ;; success
+      (with-output-to-temp-buffer buffer
+        (let* ((exit-status (call-process-shell-command command nil buffer nil)))
           (revert-buffer t t t)
-          (delete-window (get-buffer-window buffer))
-          (kill-buffer buffer))
-        (progn ;; failure
-          (revert-buffer t t t)
-          (display-buffer buffer)
-          (shrink-window-if-larger-than-buffer (get-buffer-window buffer))
-          (set-window-point (get-buffer-window buffer) 0))))))
+          (pop-to-buffer buffer)
+          (if (zerop exit-status) (quit-window t) (shrink-window-if-larger-than-buffer))
+          (pop-to-buffer saved-current-buffer))))))
 
 ;;;###autoload
 (define-minor-mode js-auto-format-mode
