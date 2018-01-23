@@ -1,6 +1,6 @@
 {
   "name": "js-auto-format-mode",
-  "version": "1.0.6",
+  "version": "1.1.0",
   "main": "index.js",
   "repository": "ybiquitous/js-auto-format-mode",
   "author": "ybiquitous <ybiquitous@gmail.com>",

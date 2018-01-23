@@ -3,6 +3,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/ybiquitous/js-auto-format-mode/compare/1.0.6...1.1.0) (2018-01-23)
+
+
+### Features
+
+* run `flycheck-buffer` if Flycheck is installed ([931e85c](https://github.com/ybiquitous/js-auto-format-mode/commit/931e85c))
+
+
+
 <a name="1.0.6"></a>
 ## [1.0.6](https://github.com/ybiquitous/js-auto-format-mode/compare/1.0.5...1.0.6) (2018-01-03)
 
