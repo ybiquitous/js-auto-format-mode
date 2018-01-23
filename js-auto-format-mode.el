@@ -96,7 +96,8 @@
           (revert-buffer t t t)
           (pop-to-buffer buffer)
           (if (zerop exit-status) (quit-window t) (shrink-window-if-larger-than-buffer))
-          (pop-to-buffer saved-current-buffer))))))
+          (pop-to-buffer saved-current-buffer)
+          (if (fboundp 'flycheck-buffer) (flycheck-buffer)))))))
 
 ;;;###autoload
 (define-minor-mode js-auto-format-mode
