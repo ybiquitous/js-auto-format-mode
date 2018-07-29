@@ -3,7 +3,7 @@
   "version": "1.1.0",
   "main": "index.js",
   "repository": "ybiquitous/js-auto-format-mode",
-  "author": "ybiquitous <ybiquitous@gmail.com>",
+  "author": "Masafumi Koba <ybiquitous@gmail.com>",
   "license": "GPL-3.0",
   "private": true,
   "devDependencies": {

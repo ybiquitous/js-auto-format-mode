@@ -141,17 +141,17 @@ For each release, please see [here](CHANGELOG.md).
 
 ### Setup
 
-1. `git clone git@github.com:ybiquitous/js-auto-format-mode.gi`
-1. `npm ci`
+1.  `git clone git@github.com:ybiquitous/js-auto-format-mode.gi`
+1.  `npm ci`
 
 ### Release
 
-1. `git checkout master`
-1. `git pull`
-1. `npm run release:dry-run`
-1. `npm run release`
-1. `git push --follow-tags`
+1.  `git checkout master`
+1.  `git pull`
+1.  `npm run release:dry-run`
+1.  `npm run release`
+1.  `git push --follow-tags`
 
 ## License
 
-[GPLv3](LICENSE) © ybiquitous
+[GPLv3](LICENSE) © Masafumi Koba
