@@ -4,7 +4,7 @@
   "main": "index.js",
   "repository": "ybiquitous/js-auto-format-mode",
   "author": "ybiquitous <ybiquitous@gmail.com>",
-  "license": "MIT",
+  "license": "GPL-3.0",
   "private": true,
   "devDependencies": {
     "ybiq": "*"
