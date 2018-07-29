@@ -10,21 +10,29 @@
     "ybiq": "*"
   },
   "scripts": {
-    "lint:md": "markdownlint *.md",
-    "lint": "npm-run-all --print-name --print-label --parallel lint:*",
-    "commitmsg": "commitlint -e",
+    "lint:md": "markdownlint --ignore node_modules --ignore CHANGELOG.md \"**/*.md\"",
+    "lint:md:fix": "prettier --write \"**/*.md\"",
+    "lint": "npm-run-all --print-label --parallel lint:*",
+    "commitmsg": "commitlint -E GIT_PARAMS",
     "precommit": "lint-staged",
-    "release": "standard-version --tag-prefix=",
+    "release": "standard-version --sign --tag-prefix=",
     "release:dry-run": "npm run release -- --dry-run"
   },
   "lint-staged": {
-    "*.md": "markdownlint"
+    "linters": {
+      "*.md": [
+        "prettier --write",
+        "markdownlint",
+        "git add"
+      ]
+    },
+    "ignore": [
+      "CHANGELOG.md"
+    ]
   },
   "standard-version": {
-    "message": "chore(release): new version %s",
     "scripts": {
-      "postbump": "./scripts/postbump",
-      "postchangelog": "prepend CHANGELOG.md \"<!-- markdownlint-disable -->\n\""
+      "postbump": "./scripts/postbump"
     }
   }
 }
