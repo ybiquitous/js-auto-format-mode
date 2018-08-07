@@ -3,7 +3,7 @@
 ;; Copyright (C) 2017 Masafumi Koba <ybiquitous@gmail.com>
 
 ;; Author: Masafumi Koba <ybiquitous@gmail.com>
-;; Version: 1.1.0
+;; Version: 1.1.1
 ;; Package-Requires: ((emacs "24"))
 ;; Keywords: languages
 ;; URL: https://github.com/ybiquitous/js-auto-format-mode
