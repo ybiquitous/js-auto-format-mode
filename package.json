@@ -7,22 +7,23 @@
   "license": "GPL-3.0",
   "private": true,
   "devDependencies": {
-    "ybiq": "*"
+    "ybiq": "^7.3.0"
   },
   "scripts": {
-    "lint:md": "markdownlint --ignore node_modules --ignore CHANGELOG.md \"**/*.md\"",
-    "lint:md:fix": "prettier --write \"**/*.md\"",
+    "lint:md": "remark . --frail",
+    "lint:md:fix": "remark . --output",
     "lint": "npm-run-all --print-label --parallel lint:*",
-    "commitmsg": "commitlint -E GIT_PARAMS",
-    "precommit": "lint-staged",
     "release": "standard-version --sign --tag-prefix=",
     "release:dry-run": "npm run release -- --dry-run"
   },
   "lint-staged": {
     "linters": {
       "*.md": [
+        "remark --output --",
+        "git add"
+      ],
+      "*.{css,html,js,json,jsx,md,mjs,scss,ts,tsx,yaml,yml}": [
         "prettier --write",
-        "markdownlint",
         "git add"
       ]
     },
@@ -32,7 +33,47 @@
   },
   "standard-version": {
     "scripts": {
-      "postbump": "./scripts/postbump"
+      "postbump": "./scripts/postbump",
+      "postchangelog": "prettier --write CHANGELOG.md"
     }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "prettier": {
+    "trailingComma": "es5"
+  },
+  "remarkConfig": {
+    "plugins": [
+      "remark-preset-lint-markdown-style-guide",
+      "remark-preset-lint-recommended",
+      "remark-lint-first-heading-level",
+      "remark-lint-no-tabs",
+      [
+        "remark-lint-emphasis-marker",
+        false
+      ],
+      [
+        "remark-lint-list-item-indent",
+        false
+      ],
+      [
+        "remark-lint-list-item-spacing",
+        false
+      ],
+      [
+        "remark-lint-ordered-list-marker-value",
+        "ordered"
+      ],
+      "remark-validate-links"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   }
 }
