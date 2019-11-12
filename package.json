@@ -7,35 +7,36 @@
   "license": "GPL-3.0",
   "private": true,
   "devDependencies": {
-    "ybiq": "^7.3.0"
+    "ybiq": "^9.1.0"
   },
   "scripts": {
     "lint:md": "remark . --frail",
     "lint:md:fix": "remark . --output",
     "lint": "npm-run-all --print-label --parallel lint:*",
-    "release": "standard-version --sign --tag-prefix=",
-    "release:dry-run": "npm run release -- --dry-run"
+    "release": "standard-version",
+    "release:dry-run": "standard-version --dry-run",
+    "test": "echo \"No tests.\"",
+    "format": "npm-run-all --print-label --parallel lint:*:fix prettier:write",
+    "prerelease": "git checkout master && git pull origin master && npm ci && npm test",
+    "prettier": "prettier --ignore-path .gitignore \"**/*.{css,html,js,json,jsx,md,mdx,mjs,scss,ts,tsx,yaml,yml}\"",
+    "prettier:check": "npm run prettier -- --check",
+    "prettier:write": "npm run prettier -- --write"
   },
   "lint-staged": {
-    "linters": {
-      "*.md": [
-        "remark --output --",
-        "git add"
-      ],
-      "*.{css,html,js,json,jsx,md,mjs,scss,ts,tsx,yaml,yml}": [
-        "prettier --write",
-        "git add"
-      ]
-    },
-    "ignore": [
-      "CHANGELOG.md"
+    "!(CHANGELOG).md": [
+      "remark --frail"
+    ],
+    "*.{css,html,js,json,jsx,md,mdx,mjs,scss,ts,tsx,yaml,yml}": [
+      "prettier --write",
+      "git add"
     ]
   },
   "standard-version": {
     "scripts": {
       "postbump": "./scripts/postbump",
       "postchangelog": "prettier --write CHANGELOG.md"
-    }
+    },
+    "sign": true
   },
   "husky": {
     "hooks": {
@@ -48,27 +49,17 @@
   },
   "remarkConfig": {
     "plugins": [
-      "remark-preset-lint-markdown-style-guide",
-      "remark-preset-lint-recommended",
-      "remark-lint-first-heading-level",
-      "remark-lint-no-tabs",
+      "preset-lint-recommended",
+      "lint-no-heading-punctuation",
       [
-        "remark-lint-emphasis-marker",
+        "lint-list-item-bullet-indent",
         false
       ],
       [
-        "remark-lint-list-item-indent",
+        "lint-list-item-indent",
         false
       ],
-      [
-        "remark-lint-list-item-spacing",
-        false
-      ],
-      [
-        "remark-lint-ordered-list-marker-value",
-        "ordered"
-      ],
-      "remark-validate-links"
+      "validate-links"
     ]
   },
   "commitlint": {
