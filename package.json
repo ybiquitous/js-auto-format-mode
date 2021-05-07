@@ -32,6 +32,7 @@
   },
   "standard-version": {
     "scripts": {
+      "postbump": "./scripts/postbump",
       "postchangelog": "prettier --write CHANGELOG.md"
     },
     "sign": true
