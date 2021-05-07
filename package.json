@@ -3,63 +3,54 @@
   "version": "1.1.1",
   "main": "index.js",
   "repository": "ybiquitous/js-auto-format-mode",
-  "author": "Masafumi Koba <ybiquitous@gmail.com>",
+  "author": "Masafumi Koba",
   "license": "GPL-3.0",
   "private": true,
   "devDependencies": {
-    "ybiq": "^11.1.0"
+    "remark-preset-ybiquitous": "^0.0.4",
+    "ybiq": "^12.4.0"
   },
   "scripts": {
     "lint:md": "remark . --frail",
     "lint:md:fix": "remark . --output",
-    "lint": "npm-run-all --print-label --parallel lint:*",
+    "lint": "npm-run-all --print-label --parallel lint:* prettier:check",
     "release": "standard-version",
     "release:dry-run": "standard-version --dry-run",
     "test": "echo \"No tests.\"",
     "format": "npm-run-all --print-label --parallel lint:*:fix prettier:write",
-    "prerelease": "git checkout master && git pull origin master && npm ci && npm test",
+    "prerelease": "git switch master && git pull && npm ci && npm run clean && npm test && npm run lint && npm run clean",
     "prettier": "prettier --ignore-path .gitignore .",
     "prettier:check": "npm run prettier -- --check",
-    "prettier:write": "npm run prettier -- --write"
+    "prettier:write": "npm run prettier -- --write",
+    "clean": "git clean -dx --force --exclude=node_modules --exclude=.husky",
+    "prepare": "husky install"
   },
   "lint-staged": {
     "!(CHANGELOG).md": "remark --frail",
-    "*": "prettier --write"
+    "*.{js,jsx,mjs,ts,tsx}": "eslint --fix",
+    "!(*.snap)": "prettier --write"
   },
   "standard-version": {
     "scripts": {
-      "postbump": "./scripts/postbump",
       "postchangelog": "prettier --write CHANGELOG.md"
     },
     "sign": true
   },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "lint-staged"
-    }
-  },
-  "prettier": {
-    "trailingComma": "es5"
-  },
   "remarkConfig": {
     "plugins": [
-      "preset-lint-recommended",
-      "lint-no-heading-punctuation",
-      [
-        "lint-list-item-bullet-indent",
-        false
-      ],
-      [
-        "lint-list-item-indent",
-        false
-      ],
-      "validate-links"
+      "remark-preset-ybiquitous"
     ]
   },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
-    ]
+    ],
+    "rules": {
+      "body-max-line-length": [
+        1,
+        "always",
+        100
+      ]
+    }
   }
 }
